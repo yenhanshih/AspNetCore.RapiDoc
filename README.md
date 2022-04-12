@@ -97,3 +97,4 @@ NavLogo        | Adds a navigation logo on top of the side navigation bar with t
 NavLogoWidth   | Specifies the navigation logo width of the custom logo, only available in read-mode | 36
 NavLogoHeight  | Specifies the navigation logo height of the custom logo, only available in read-mode | 36
 NavLogoPadding | Specifies the navigation logo padding of the custom logo, only available in read-mode | 0
+Auth           | Contents appear at authentication section which is under the overview > servers slot. You can link to this section using #auth | string.empty

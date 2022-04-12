@@ -1,4 +1,4 @@
-using AspNetCore.RapiDoc.Util;
+﻿using AspNetCore.RapiDoc.Util;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
@@ -24,6 +24,11 @@ namespace AspNetCore.RapiDoc
         /// Url of the OpenAPI spec to view	
         /// </summary>
         public string SpecUrl { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Setting true will update the url on browser's location whenever a new section is visited either by scrolling or clicking
+        /// </summary>
+        public bool UpdateRoute { get; set; } = true;
 
         private string title = "RapiDoc";
 
@@ -120,6 +125,10 @@ namespace AspNetCore.RapiDoc
         /// </summary>
         public ApiServerOptions ApiServerOptions { get; set; } = new ApiServerOptions();
 
+        /// <summary>
+        /// Slots
+        /// </summary>
+        public SlotOptions SlotsOptions { get; set; } = new SlotOptions();
     }
 
     public class PathInfo
@@ -270,25 +279,6 @@ namespace AspNetCore.RapiDoc
         /// Navigation bar's background color
         /// </summary>
         public Color NavBgColor { get; set; } = Color.Empty;
-
-
-        /// <summary>
-        /// URL of navigation bar's background image
-        /// </summary>
-        public string NavBgImage { get; set; } = string.Empty;
-
-
-        /// <summary>
-        /// Navigation bar's background image size (same as css background-size property) 
-        /// </summary>
-        public ImageSize NavBgImageSize { get; set; } = ImageSize.Auto;
-
-
-        /// <summary>
-        /// Navigation bar's background image repeat (same as css background-repeat property)
-        /// </summary>
-        public Repeat NavBgImageRepeat { get; set; } = Repeat.NoRepeat; // ToDo: Find out it's default value
-
 
         /// <summary>
         /// Navigation bar's Text color	
@@ -727,8 +717,14 @@ namespace AspNetCore.RapiDoc
         /// </summary>
         public int NavLogoPadding { get; set; } = 0;
 
+        /// <summary>
+        /// Contents appear at authentication section which is under the overview > servers slot. You can link to this section using #auth
+        /// </summary>
+        public string Auth { get; set; } = string.Empty;
+
         public string LogoTag => string.IsNullOrWhiteSpace(Logo) ? string.Empty : $"<img slot=\"logo\" src=\"{Logo}\" style=\"width:{LogoWidth}px; height:{LogoHeight}px; padding:{LogoPadding}px;\"/>";
         public string NavLogoTag => string.IsNullOrWhiteSpace(NavLogo) ? string.Empty : $"<img slot=\"nav-logo\" src=\"{NavLogo}\" style=\"width:{NavLogoWidth}px; height:{NavLogoHeight}px; padding:{NavLogoPadding}px;\"/>";
+        public string AuthTag => string.IsNullOrEmpty(Auth) ? string.Empty : $"<div slot=\"auth\">{Auth}</div>";
     }
     #endregion
 }

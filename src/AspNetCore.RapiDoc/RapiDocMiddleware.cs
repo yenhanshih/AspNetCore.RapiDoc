@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Text;
@@ -112,6 +112,7 @@ namespace AspNetCore.RapiDoc
                 { "%(DocumentTitle)", _options.HeadingText },
                 { "%(HeadContent)", _options.HeadContent },
                 { "%(SpecUrl)", _options.SpecUrl },
+                { "%(UpdateRoute)", _options.UpdateRoute.ToString().ToLower() },
                 { "%(SortTags)", _options.SortTags.ToString().ToLower() },
                 { "%(SortEndpointsBy)", _options.SortEndpointsBy.GetDisplayValue() },
                 { "%(GotoPath)", _options.GotoPath?.ToString()  ?? string.Empty},
@@ -131,9 +132,6 @@ namespace AspNetCore.RapiDoc
                 //Navigation bar settings
                 { "%(UsePathInNavBar)", _options.NavigationBarOptions.UsePathInNavBar.ToString().ToLower() },
                 { "%(NavBgColor)", _options.NavigationBarOptions.NavBgColor.ToHtml() },
-                { "%(NavBgImage)", _options.NavigationBarOptions.NavBgImage },
-                { "%(NavBgImageSize)", _options.NavigationBarOptions.NavBgImageSize.GetDisplayValue() },
-                { "%(NavBgImageRepeat)", _options.NavigationBarOptions.NavBgImageRepeat.GetDisplayValue() },
                 { "%(NavTextColor)", _options.NavigationBarOptions.NavTextColor.ToHtml() },
                 { "%(NavHoverBgColor)", _options.NavigationBarOptions.NavHoverBgColor.ToHtml() },
                 { "%(NavHoverTextColor)", _options.NavigationBarOptions.NavHoverTextColor.ToHtml() },
@@ -177,6 +175,7 @@ namespace AspNetCore.RapiDoc
                 //Slot
                 { "%(LogoTag)", _options.SlotsOptions.LogoTag },
                 { "%(NavLogoTag)", _options.SlotsOptions.NavLogoTag },
+                { "%(AuthTag)", _options.SlotsOptions.AuthTag }
             };
         }
     }
